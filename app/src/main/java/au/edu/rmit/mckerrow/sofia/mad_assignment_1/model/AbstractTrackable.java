@@ -1,6 +1,6 @@
 package au.edu.rmit.mckerrow.sofia.mad_assignment_1.model;
 
-public abstract class AbstractTrackable {
+public abstract class AbstractTrackable implements Trackable {
 
     private int trackableID;
     private String name;
@@ -54,5 +54,16 @@ public abstract class AbstractTrackable {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    @Override
+    public String toString() {
+        return "AbstractTrackable{" +
+                "trackableID=" + trackableID +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", url='" + url + '\'' +
+                ", category='" + category + '\'' +
+                '}';
     }
 }

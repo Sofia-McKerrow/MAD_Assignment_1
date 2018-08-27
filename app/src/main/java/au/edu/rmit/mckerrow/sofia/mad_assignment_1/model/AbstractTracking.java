@@ -2,7 +2,7 @@ package au.edu.rmit.mckerrow.sofia.mad_assignment_1.model;
 
 import java.util.Date;
 
-public abstract class AbstractTracking {
+public abstract class AbstractTracking implements Tracking {
 
     private String trackingID;
     private String trackableID;
@@ -87,5 +87,19 @@ public abstract class AbstractTracking {
 
     public void setMeetLocation(String meetLocation) {
         this.meetLocation = meetLocation;
+    }
+
+    @Override
+    public String toString() {
+        return "AbstractTracking{" +
+                "trackingID='" + trackingID + '\'' +
+                ", trackableID='" + trackableID + '\'' +
+                ", title='" + title + '\'' +
+                ", startTime=" + startTime +
+                ", finishTime=" + finishTime +
+                ", meetTime=" + meetTime +
+                ", currentLocation='" + currentLocation + '\'' +
+                ", meetLocation='" + meetLocation + '\'' +
+                '}';
     }
 }
