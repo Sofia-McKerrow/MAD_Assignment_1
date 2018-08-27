@@ -53,13 +53,28 @@ public class DisplayTrackablesActivity extends AppCompatActivity {
             String[] values;
 
             while (scanner.hasNextLine()) {
-                values = scanner.nextLine().split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
-                String id = values[0];
-                int trackableID = Integer.parseInt(id);
-                String name = values[1];
-                String description = values[2];
-                String url = values[3];
-                String category = values[4];
+                // values = scanner.nextLine().split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
+                int trackableID = 0;
+                String id = null;
+                String name = null;
+                String description = null;
+                String url = null;
+                String category = null;
+
+                // Check if next token is an int
+                if (scanner.hasNextInt()) {
+                    trackableID = scanner.nextInt();
+                }
+                // If next token isn't an int
+                else {
+                    values = scanner.nextLine().split("\"(,\")*");
+                    id = values[0];
+                    // int trackableID = Integer.parseInt(id);
+                    name = values[1];
+                    description = values[2];
+                    url = values[3];
+                    category = values[4];
+                }
 
                 PlaneTrackable trackableInfo = new PlaneTrackable(trackableID, name, description, url, category);
                 trackableList.add(trackableInfo);
