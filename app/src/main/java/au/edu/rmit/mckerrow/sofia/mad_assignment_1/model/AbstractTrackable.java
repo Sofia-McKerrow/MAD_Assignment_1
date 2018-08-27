@@ -1,6 +1,19 @@
 package au.edu.rmit.mckerrow.sofia.mad_assignment_1.model;
 
+import android.content.Context;
+import android.content.res.Resources;
+import android.util.Log;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+import au.edu.rmit.mckerrow.sofia.mad_assignment_1.R;
+
 public abstract class AbstractTrackable implements Trackable {
+
+    private static final String LOG_TAG = PlaneTrackable.class.getName();
+    private Map<String, PlaneTrackable> trackableMap = new HashMap<String, PlaneTrackable>();
 
     private int trackableID;
     private String name;
