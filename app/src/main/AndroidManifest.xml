@@ -16,6 +16,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".controller.DisplayTrackableRouteInfoActivity"
+            android:parentActivityName=".controller.DisplayTrackablesActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".controller.DisplayTrackablesActivity" />
+        </activity>
     </application>
 
 </manifest>

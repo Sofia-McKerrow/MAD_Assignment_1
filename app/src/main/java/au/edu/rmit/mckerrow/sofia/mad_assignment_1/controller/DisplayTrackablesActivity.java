@@ -21,8 +21,8 @@ import au.edu.rmit.mckerrow.sofia.mad_assignment_1.model.ReadFile;
 
 public class DisplayTrackablesActivity extends AppCompatActivity {
 
-    public static List<BirdTrackable> trackableList = ReadFile.getTrackableList();
-    public static Map<String, BirdTrackable> trackableMap = ReadFile.getTrackableMap();
+    private static List<BirdTrackable> trackableList;
+    private static Map<String, BirdTrackable> trackableMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +31,16 @@ public class DisplayTrackablesActivity extends AppCompatActivity {
 
         // Read trackable data from bird_data.txt
         ReadFile.readTrackableFile(this);
+        trackableList = ReadFile.getTrackableList();
+        trackableMap = ReadFile.getTrackableMap();
+
+        for (int i = 0; i < trackableList.size(); i++) {
+            Log.i("listTag", trackableList.get(i).toString());
+        }
+
+        for (Map.Entry<String, BirdTrackable> entry : trackableMap.entrySet()) {
+            Log.i("myTag", entry.getKey()+ " : " + entry.getValue().toString());
+        }
 
         // Sort list alphabetically
         Collections.sort(trackableList, new Comparator<BirdTrackable>() {

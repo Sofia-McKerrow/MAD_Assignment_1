@@ -22,10 +22,6 @@ public abstract class AbstractTracking implements Tracking {
     private String currentLocation;
     private String meetLocation;
 
-    private static final String LOG_TAG = BirdTrackable.class.getName();
-    private Map<String, BirdTrackable> trackableList = new HashMap<String, BirdTrackable>();
-
-
     public AbstractTracking(String trackingID, String trackableID, String title, Date startTime, Date finishTime,
                             Date meetTime, String currentLocation, String meetLocation) {
         this.trackingID = trackingID;
@@ -115,38 +111,5 @@ public abstract class AbstractTracking implements Tracking {
                 ", meetLocation='" + meetLocation + '\'' +
                 '}';
     }
-
-    // Read data from food_truck_data.txt
-    private void readTrackableFile(Context context)
-    {
-        trackableList.clear();
-        // resource reference to tracking_data.txt in res/raw/ folder of your project
-        // supports trailing comments with //
-        try (Scanner scanner = new Scanner(context.getResources().openRawResource(R.raw.food_truck_data)))
-        {
-            String [] values;
-
-            while(scanner.hasNextLine())
-            {
-                values = scanner.nextLine().split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
-                String id = values[0];
-                int trackableID = Integer.parseInt(id);
-                String name = values[1];
-                String description = values[2];
-                String url = values[3];
-                String category = values[4];
-                String image = values[5];
-
-                BirdTrackable trackableInfo = new BirdTrackable(trackableID, name, description, url, category, image);
-                trackableList.put(id, trackableInfo);
-            }
-            scanner.close();
-        }
-        catch (Resources.NotFoundException e)
-        {
-            Log.i(LOG_TAG, "File Not Found Exception Caught");
-        }
-    }
-
 
 }

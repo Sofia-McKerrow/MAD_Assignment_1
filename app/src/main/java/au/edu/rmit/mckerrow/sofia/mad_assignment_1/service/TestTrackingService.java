@@ -1,4 +1,4 @@
-package au.edu.rmit.mckerrow.sofia.mad_assignment_1;
+package au.edu.rmit.mckerrow.sofia.mad_assignment_1.service;
 
 import android.content.Context;
 import android.util.Log;

@@ -1,4 +1,4 @@
-package au.edu.rmit.mckerrow.sofia.mad_assignment_1;
+package au.edu.rmit.mckerrow.sofia.mad_assignment_1.service;
 
 // simulated tracking service by Caspar for MAD s2, 2018
 // Usage: add this class to project in appropriate package
@@ -20,6 +20,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
+
+import au.edu.rmit.mckerrow.sofia.mad_assignment_1.R;
 
 public class TrackingService
 {

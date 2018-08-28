@@ -18,14 +18,12 @@ public class ReadFile {
     public static Map<String, BirdTrackable> trackableMap = new HashMap<>();
     private static final String LOG_TAG = BirdTrackable.class.getName();
 
-    // Read file with trackable data - food_truck_data.txt
+    // Read file with trackable data e.g. bird_data.txt
     public static void readTrackableFile(Context context) {
+
         if (trackableMap != null) {
             trackableMap.clear();
         }
-
-        // resource reference to tracking_data.txt in res/raw/ folder of your project
-        // supports trailing comments with //
 
         try (Scanner scanner = new Scanner(context.getResources().openRawResource(R.raw.bird_data))) {
             String[] values;
@@ -40,21 +38,16 @@ public class ReadFile {
                 String category = null;
                 String image = null;
 
-                // Check if next token is an int
-                if (scanner.hasNextInt()) {
-                    trackableID = scanner.nextInt();
-                }
-                // If next token isn't an int
-                else {
-                    values = scanner.nextLine().split("\"(,\")*");
-                    id = values[0];
-                    // int trackableID = Integer.parseInt(id);
-                    name = values[1];
-                    description = values[2];
-                    url = values[3];
-                    category = values[4];
-                    image = values[5];
-                }
+                values = scanner.nextLine().split("\"(,\")*");
+                String testID = values[0];
+                String[] splitID = testID.split(",");
+                id = splitID[0];
+                trackableID = Integer.parseInt(id);
+                name = values[1];
+                description = values[2];
+                url = values[3];
+                category = values[4];
+                image = values[5];
 
                 BirdTrackable trackableInfo = new BirdTrackable(trackableID, name, description, url, category, image);
                 trackableList.add(trackableInfo);
