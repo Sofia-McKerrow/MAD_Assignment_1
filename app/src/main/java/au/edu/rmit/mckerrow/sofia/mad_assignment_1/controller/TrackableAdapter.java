@@ -1,13 +1,9 @@
-package au.edu.rmit.mckerrow.sofia.mad_assignment_1.view;
+package au.edu.rmit.mckerrow.sofia.mad_assignment_1.controller;
 
 import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
-import android.preference.PreferenceManager;
+import android.media.Image;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,22 +11,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import au.edu.rmit.mckerrow.sofia.mad_assignment_1.R;
-import au.edu.rmit.mckerrow.sofia.mad_assignment_1.model.PlaneTrackable;
-import android.widget.Toast;
+import au.edu.rmit.mckerrow.sofia.mad_assignment_1.model.BirdTrackable;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
 
 public class TrackableAdapter extends RecyclerView.Adapter<TrackableAdapter.ViewHolder> {
     private Context mContext;
-    private List<PlaneTrackable> trackableList;
+    private List<BirdTrackable> trackableList;
 
-    public TrackableAdapter(Context context, List<PlaneTrackable> trackables) {
+    public TrackableAdapter(Context context, List<BirdTrackable> trackables) {
         this.mContext = context;
         this.trackableList = trackables;
         // trackables.addAll(trackableMap.values());
@@ -46,18 +37,18 @@ public class TrackableAdapter extends RecyclerView.Adapter<TrackableAdapter.View
 
     @Override
     public void onBindViewHolder(TrackableAdapter.ViewHolder holder, int position) {
-        PlaneTrackable planeTrackable = trackableList.get(position);
+        BirdTrackable birdTrackable = trackableList.get(position);
 
-        holder.tvName.setText(planeTrackable.getName());
-//        try {
-//            holder.tvName.setText(planeTrackable.getName());
-////            String imageFile = planeTrackable.getImage();
-////            InputStream inputStream = mContext.getAssets().open(imageFile);
-////            Drawable d = Drawable.createFromStream(inputStream, null);
-////            holder.imageView.setImageDrawable(d);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+        holder.tvName.setText(birdTrackable.getName());
+        try {
+            holder.tvName.setText(birdTrackable.getName());
+            String imageFile = birdTrackable.getImage();
+            InputStream inputStream = mContext.getAssets().open(imageFile);
+            Drawable d = Drawable.createFromStream(inputStream, null);
+            holder.imageView.setImageDrawable(d);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -68,10 +59,12 @@ public class TrackableAdapter extends RecyclerView.Adapter<TrackableAdapter.View
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         public TextView tvName;
+        public ImageView imageView;
         public ViewHolder(View itemView) {
             super(itemView);
 
             tvName = (TextView) itemView.findViewById(R.id.trackableNameText);
+            imageView = (ImageView) itemView.findViewById(R.id.imageView);
         }
     }
 }

@@ -22,8 +22,8 @@ public abstract class AbstractTracking implements Tracking {
     private String currentLocation;
     private String meetLocation;
 
-    private static final String LOG_TAG = PlaneTrackable.class.getName();
-    private Map<String, PlaneTrackable> trackableList = new HashMap<String, PlaneTrackable>();
+    private static final String LOG_TAG = BirdTrackable.class.getName();
+    private Map<String, BirdTrackable> trackableList = new HashMap<String, BirdTrackable>();
 
 
     public AbstractTracking(String trackingID, String trackableID, String title, Date startTime, Date finishTime,
@@ -135,8 +135,9 @@ public abstract class AbstractTracking implements Tracking {
                 String description = values[2];
                 String url = values[3];
                 String category = values[4];
+                String image = values[5];
 
-                PlaneTrackable trackableInfo = new PlaneTrackable(trackableID, name, description, url, category);
+                BirdTrackable trackableInfo = new BirdTrackable(trackableID, name, description, url, category, image);
                 trackableList.put(id, trackableInfo);
             }
             scanner.close();

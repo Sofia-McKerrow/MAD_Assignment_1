@@ -1,4 +1,4 @@
-package au.edu.rmit.mckerrow.sofia.mad_assignment_1.view;
+package au.edu.rmit.mckerrow.sofia.mad_assignment_1.controller;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -8,21 +8,22 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
 import au.edu.rmit.mckerrow.sofia.mad_assignment_1.R;
-import au.edu.rmit.mckerrow.sofia.mad_assignment_1.model.PlaneTrackable;
-import au.edu.rmit.mckerrow.sofia.mad_assignment_1.sample.SampleTrackableProvider;
+import au.edu.rmit.mckerrow.sofia.mad_assignment_1.model.BirdTrackable;
 
 public class DisplayTrackablesActivity extends AppCompatActivity {
 
-    // List<PlaneTrackable> planeTrackableList = SampleTrackableProvider.trackableList;
-    public static List<PlaneTrackable> trackableList = new ArrayList<>();
-    public static Map<String, PlaneTrackable> trackableMap = new HashMap<>();
-    private static final String LOG_TAG = PlaneTrackable.class.getName();
+    // List<BirdTrackable> planeTrackableList = SampleTrackableProvider.trackableList;
+    public static List<BirdTrackable> trackableList = new ArrayList<>();
+    public static Map<String, BirdTrackable> trackableMap = new HashMap<>();
+    private static final String LOG_TAG = BirdTrackable.class.getName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +31,15 @@ public class DisplayTrackablesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_display_trackables_list);
 
         readTrackableFile(this);
+
+        // Sort list alphabetically
+        Collections.sort(trackableList, new Comparator<BirdTrackable>() {
+            @Override
+            public int compare(BirdTrackable o1, BirdTrackable o2) {
+                return o1.getName().compareTo(o2.getName());
+            }
+        });
+
         TrackableAdapter adapter = new TrackableAdapter(this, trackableList);
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.rvTrackables);
@@ -49,7 +59,7 @@ public class DisplayTrackablesActivity extends AppCompatActivity {
         // resource reference to tracking_data.txt in res/raw/ folder of your project
         // supports trailing comments with //
 
-        try (Scanner scanner = new Scanner(context.getResources().openRawResource(R.raw.food_truck_data))) {
+        try (Scanner scanner = new Scanner(context.getResources().openRawResource(R.raw.bird_data))) {
             String[] values;
 
             while (scanner.hasNextLine()) {
@@ -60,6 +70,7 @@ public class DisplayTrackablesActivity extends AppCompatActivity {
                 String description = null;
                 String url = null;
                 String category = null;
+                String image = null;
 
                 // Check if next token is an int
                 if (scanner.hasNextInt()) {
@@ -74,9 +85,10 @@ public class DisplayTrackablesActivity extends AppCompatActivity {
                     description = values[2];
                     url = values[3];
                     category = values[4];
+                    image = values[5];
                 }
 
-                PlaneTrackable trackableInfo = new PlaneTrackable(trackableID, name, description, url, category);
+                BirdTrackable trackableInfo = new BirdTrackable(trackableID, name, description, url, category, image);
                 trackableList.add(trackableInfo);
                 trackableMap.put(id, trackableInfo);
             }
