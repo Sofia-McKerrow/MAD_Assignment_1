@@ -3,6 +3,7 @@ package au.edu.rmit.mckerrow.sofia.mad_assignment_1.controller;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,6 +17,7 @@ import au.edu.rmit.mckerrow.sofia.mad_assignment_1.R;
 import au.edu.rmit.mckerrow.sofia.mad_assignment_1.model.BirdTrackable;
 import au.edu.rmit.mckerrow.sofia.mad_assignment_1.model.ReadFile;
 import au.edu.rmit.mckerrow.sofia.mad_assignment_1.model.TrackableInfo;
+import au.edu.rmit.mckerrow.sofia.mad_assignment_1.service.TrackingService;
 
 public class DisplayTrackableRouteInfoActivity extends AppCompatActivity {
 
@@ -25,6 +27,8 @@ public class DisplayTrackableRouteInfoActivity extends AppCompatActivity {
     private static List<BirdTrackable> trackableList;
     private static Map<String, BirdTrackable> trackableMap;
     private TrackableInfo trackableInfo;
+
+    private static final String LOG_TAG = TrackingService.class.getName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +44,7 @@ public class DisplayTrackableRouteInfoActivity extends AppCompatActivity {
         trackableMap = trackableInfo.getTrackableMap();
         String trackableID = getIntent().getExtras().getString(TrackableAdapter.TRACKABLE_ID_KEY);
         BirdTrackable birdTrackable = trackableMap.get(trackableID);
-        Toast.makeText(this, "Received item " + birdTrackable.getName(), Toast.LENGTH_SHORT).show();
+        // Toast.makeText(this, "Received item " + birdTrackable.getName(), Toast.LENGTH_SHORT).show();
 
         trackableName = (TextView) findViewById(R.id.trackableName);
         trackableImage = (ImageView) findViewById(R.id.trackableImage);
@@ -63,5 +67,9 @@ public class DisplayTrackableRouteInfoActivity extends AppCompatActivity {
                 }
             }
         }
+
+        TrackingService trackingService = TrackingService.getSingletonInstance(this);
+        Log.i(LOG_TAG, "Parsed File Contents:");
+        trackingService.logAll();
     }
 }
