@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Australian Bird Tracker</string>
+    <string name="filter">Filter by category</string>
+    <string-array name="categories">
+        <item>All</item>
+        <item>Bird of Prey</item>
+        <item>Bush Bird</item>
+        <item>Parrot</item>
+        <item>Sea Bird</item>
+        <item>Water Bird</item>
+    </string-array>
 </resources>
