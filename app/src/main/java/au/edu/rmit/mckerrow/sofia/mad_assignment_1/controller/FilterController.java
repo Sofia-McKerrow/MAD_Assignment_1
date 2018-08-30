@@ -11,6 +11,7 @@ import java.util.List;
 
 import au.edu.rmit.mckerrow.sofia.mad_assignment_1.model.BirdTrackable;
 import au.edu.rmit.mckerrow.sofia.mad_assignment_1.model.ReadFile;
+import au.edu.rmit.mckerrow.sofia.mad_assignment_1.model.TrackableInfo;
 
 public class FilterController implements AdapterView.OnItemSelectedListener {
 
@@ -27,7 +28,7 @@ public class FilterController implements AdapterView.OnItemSelectedListener {
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        // trackableList = ReadFile.getTrackableList();
+        trackableList = TrackableInfo.getFINAL_TRACKABLE_LIST();
         filteredList = new ArrayList<BirdTrackable>();
 
         for (int i = 0; i < trackableList.size(); i++) {
