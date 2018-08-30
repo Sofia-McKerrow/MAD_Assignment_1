@@ -11,6 +11,7 @@ public class TrackableInfo {
     private static Context mContext;
     private List<BirdTrackable> trackableList;
     private Map<String, BirdTrackable> trackableMap;
+    private final List<BirdTrackable> FINAL_TRACKABLE_LIST = ReadFile.getTrackableList();
 
     // Constructor for singleton
     private TrackableInfo() {
@@ -52,5 +53,9 @@ public class TrackableInfo {
 
     public void setTrackableMap(Map<String, BirdTrackable> trackableMap) {
         this.trackableMap = trackableMap;
+    }
+
+    public List<BirdTrackable> getFINAL_TRACKABLE_LIST() {
+        return FINAL_TRACKABLE_LIST;
     }
 }

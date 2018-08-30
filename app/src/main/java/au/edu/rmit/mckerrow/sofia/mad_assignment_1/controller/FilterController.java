@@ -1,6 +1,7 @@
 package au.edu.rmit.mckerrow.sofia.mad_assignment_1.controller;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Toast;
@@ -9,15 +10,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import au.edu.rmit.mckerrow.sofia.mad_assignment_1.model.BirdTrackable;
-import au.edu.rmit.mckerrow.sofia.mad_assignment_1.model.TrackableInfo;
+import au.edu.rmit.mckerrow.sofia.mad_assignment_1.model.ReadFile;
 
 public class FilterController implements AdapterView.OnItemSelectedListener {
 
     private Context mContext;
     private List<BirdTrackable> trackableList;
     private List<BirdTrackable> filteredList;
-    private TrackableInfo trackableInfo;
     private String category;
+
+    private static final String LOG_TAG = "MyTag";
 
     public FilterController(Context mContext) {
         this.mContext = mContext;
@@ -25,27 +27,48 @@ public class FilterController implements AdapterView.OnItemSelectedListener {
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        trackableInfo = TrackableInfo.getSingletonInstance(mContext);
-        trackableList = trackableInfo.getTrackableList();
-        if (filteredList != null) {
-            filteredList.clear();
+        // trackableList = ReadFile.getTrackableList();
+        filteredList = new ArrayList<BirdTrackable>();
+
+        for (int i = 0; i < trackableList.size(); i++) {
+            Log.i(LOG_TAG, "trackableList " + trackableList.get(i).toString());
+        }
+
+        for (int i = 0; i < filteredList.size(); i++) {
+            Log.i(LOG_TAG, "filteredList " + filteredList.get(i).toString());
         }
 
         switch (position) {
             // If All is selected
             case 0:
-               filteredList = trackableList;
+               filteredList.addAll(trackableList);
                DisplayTrackablesActivity.getAdapter().notifyDataSetChanged();
                break;
             case 1:
                 category = "Bird of Prey";
                 filteredList = filterTrackableList(trackableList, category);
                 DisplayTrackablesActivity.getAdapter().notifyDataSetChanged();
-               break;
+
+                for (int i = 0; i < trackableList.size(); i++) {
+                    Log.i(LOG_TAG, "trackableList " + trackableList.get(i).toString());
+                }
+
+                for (int i = 0; i < filteredList.size(); i++) {
+                    Log.i(LOG_TAG, "filteredList " + filteredList.get(i).toString());
+                }
+                break;
             case 2:
                 category = "Bush Bird";
                 filteredList = filterTrackableList(trackableList, category);
                 DisplayTrackablesActivity.getAdapter().notifyDataSetChanged();
+
+                for (int i = 0; i < trackableList.size(); i++) {
+                    Log.i(LOG_TAG, "trackableList " + trackableList.get(i).toString());
+                }
+
+                for (int i = 0; i < filteredList.size(); i++) {
+                    Log.i(LOG_TAG, "filteredList " + filteredList.get(i).toString());
+                }
                 break;
             case 3:
                 category = "Parrot";
