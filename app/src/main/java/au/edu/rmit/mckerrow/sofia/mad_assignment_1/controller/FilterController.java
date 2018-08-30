@@ -17,25 +17,32 @@ public class FilterController implements AdapterView.OnItemSelectedListener {
 
     private Context mContext;
     private List<BirdTrackable> trackableList;
-    private List<BirdTrackable> filteredList;
+    private static List<BirdTrackable> filteredList;
     private List<BirdTrackable> tempList;
     private String category;
+    private TrackableAdapter adapter;
+    private TrackableInfo trackableInfo;
 
     private static final String LOG_TAG = "MyTag";
 
     public FilterController(Context mContext) {
         this.mContext = mContext;
-        filteredList = new ArrayList<>();
-        trackableList = ReadFile.getTrackableList();
     }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 //        List<BirdTrackable> tempList = new ArrayList<BirdTrackable>();
 //        tempList.addAll(TrackableInfo.getFINAL_TRACKABLE_LIST());
+        adapter = DisplayTrackablesActivity.getAdapter();
 
-        // trackableList = new ArrayList<>();
-        // trackableList.addAll(TrackableInfo.getFINAL_TRACKABLE_LIST());
+        filteredList = new ArrayList<>();
+        trackableList = new ArrayList<>();
+        trackableList.addAll(TrackableInfo.getFINAL_TRACKABLE_LIST());
+        // trackableList = ReadFile.getTrackableList();
+
+        for (int i = 0; i < trackableList.size(); i++) {
+            Log.i(LOG_TAG, "trackableList " + trackableList.get(i).toString());
+        }
 
         if (filteredList != null) {
             filteredList.clear();
@@ -45,13 +52,13 @@ public class FilterController implements AdapterView.OnItemSelectedListener {
             // If All is selected
             case 0:
                filteredList.addAll(trackableList);
-               DisplayTrackablesActivity.getAdapter().notifyDataSetChanged();
+               adapter.notifyDataSetChanged();
                break;
             case 1:
                 // If Bird of Prey category is selected
                 category = "Bird of Prey";
                 filteredList = filterTrackableList(trackableList, category);
-                DisplayTrackablesActivity.getAdapter().notifyDataSetChanged();
+                adapter.notifyDataSetChanged();
 
                 for (int i = 0; i < trackableList.size(); i++) {
                     Log.i(LOG_TAG, "trackableList " + trackableList.get(i).toString());
@@ -66,7 +73,7 @@ public class FilterController implements AdapterView.OnItemSelectedListener {
                 // If Bush Bird category is selected
                 category = "Bush Bird";
                 filteredList = filterTrackableList(trackableList, category);
-                DisplayTrackablesActivity.getAdapter().notifyDataSetChanged();
+                adapter.notifyDataSetChanged();
 
                 for (int i = 0; i < trackableList.size(); i++) {
                     Log.i(LOG_TAG, "trackableList " + trackableList.get(i).toString());
@@ -81,19 +88,19 @@ public class FilterController implements AdapterView.OnItemSelectedListener {
                 // If Parrot category is selected
                 category = "Parrot";
                 filteredList = filterTrackableList(trackableList, category);
-                DisplayTrackablesActivity.getAdapter().notifyDataSetChanged();
+                adapter.notifyDataSetChanged();
                 break;
             case 4:
                 // If Sea Bird category is selected
                 category = "Sea Bird";
                 filteredList = filterTrackableList(trackableList, category);
-                DisplayTrackablesActivity.getAdapter().notifyDataSetChanged();
+                adapter.notifyDataSetChanged();
                 break;
             case 5:
                 // If Water Bird category is selected
                 category = "Water Bird";
                 filteredList = filterTrackableList(trackableList, category);
-                DisplayTrackablesActivity.getAdapter().notifyDataSetChanged();
+                adapter.notifyDataSetChanged();
                 break;
         }
     }
@@ -117,5 +124,9 @@ public class FilterController implements AdapterView.OnItemSelectedListener {
         list.removeAll(toRemove);
 
         return list;
+    }
+
+    public static List<BirdTrackable> getFilteredList() {
+        return filteredList;
     }
 }

@@ -83,4 +83,9 @@ public class TrackableAdapter extends RecyclerView.Adapter<TrackableAdapter.View
             mView = itemView;
         }
     }
+
+    public void updateRecyclerView(List<BirdTrackable> filterList) {
+        filterList = FilterController.getFilteredList();
+        notifyDataSetChanged();
+    }
 }

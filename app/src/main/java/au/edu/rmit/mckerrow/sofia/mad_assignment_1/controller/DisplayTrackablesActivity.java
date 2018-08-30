@@ -3,6 +3,7 @@ package au.edu.rmit.mckerrow.sofia.mad_assignment_1.controller;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
@@ -23,12 +24,14 @@ public class DisplayTrackablesActivity extends AppCompatActivity {
     private TrackableInfo trackableInfo;
     private static TrackableAdapter adapter;
 
+    private static final String LOG_TAG = "MyTag";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_trackables_list);
 
-        // Check if a trackableInfo singleton has been created
+//        // Check if a trackableInfo singleton has been created
         if (trackableInfo == null) {
             trackableInfo = TrackableInfo.getSingletonInstance(this);
         }
@@ -49,7 +52,12 @@ public class DisplayTrackablesActivity extends AppCompatActivity {
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.rvTrackables);
         recyclerView.setAdapter(adapter);
 
-        setUpSpinner();
+        Spinner spinner = (Spinner) findViewById(R.id.filterSpinner);
+        ArrayAdapter<CharSequence> arrayAdapter = ArrayAdapter.createFromResource(this,R.array.categories,android.R.layout.simple_spinner_item);
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(arrayAdapter);
+
+        spinner.setOnItemSelectedListener(new FilterController(this));
 
         // TestTrackingService.test(this);
     }
@@ -61,7 +69,7 @@ public class DisplayTrackablesActivity extends AppCompatActivity {
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(arrayAdapter);
 
-        spinner.setOnItemSelectedListener(new FilterController(this));
+        //spinner.setOnItemSelectedListener(new FilterController(this));
     }
 
     public static TrackableAdapter getAdapter() {
