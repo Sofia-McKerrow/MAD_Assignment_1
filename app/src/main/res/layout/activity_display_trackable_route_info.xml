@@ -19,7 +19,7 @@ tools:context=".controller.DisplayTrackableRouteInfoActivity">
     android:layout_alignParentStart="true"
     android:layout_alignParentTop="true"
     android:text="Item Name"
-    android:textSize="24sp"
+    android:textSize="@dimen/trackable_text_size"
     tools:ignore="HardcodedText" />
 
 <ImageView
@@ -28,7 +28,7 @@ tools:context=".controller.DisplayTrackableRouteInfoActivity">
     android:layout_height="@dimen/route_info_layout_height"
     android:layout_below="@+id/trackableName"
     android:layout_centerHorizontal="true"
-    android:layout_marginTop="16dp"
+    android:layout_marginTop="@dimen/activity_vertical_margin"
     android:scaleType="fitCenter"
     app:srcCompat="@drawable/magpie"/>
 

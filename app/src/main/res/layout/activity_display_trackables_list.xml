@@ -7,10 +7,9 @@
     tools:context=".controller.DisplayTrackablesActivity">
 
     <LinearLayout
-        android:id="@+id/control_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
         android:orientation="vertical"
         >
 
@@ -23,14 +22,14 @@
                 android:id="@+id/filterLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
                 android:text="@string/filter"
                 android:textSize="@dimen/filter_label_text_size"
-                android:textColor="#000000"/>
+                android:textColor="@color/black"/>
 
             <Spinner
                 android:id="@+id/filterSpinner"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
@@ -39,7 +38,7 @@
             android:id="@+id/rvTrackables"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
             app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
     </LinearLayout>
 

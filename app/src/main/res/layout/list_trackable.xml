@@ -27,7 +27,8 @@
         android:layout_marginStart="@dimen/activity_horizontal_margin"
         android:layout_toEndOf="@+id/imageView"
         android:layout_toRightOf="@+id/imageView"
+        android:textColor="@color/black"
         android:text="A trackable"
-        android:textSize="24sp"
+        android:textSize="@dimen/trackable_text_size"
         tools:ignore="HardcodedText" />
 </RelativeLayout>

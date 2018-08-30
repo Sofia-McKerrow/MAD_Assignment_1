@@ -3,7 +3,6 @@ package au.edu.rmit.mckerrow.sofia.mad_assignment_1.controller;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
@@ -14,7 +13,6 @@ import java.util.Map;
 
 import au.edu.rmit.mckerrow.sofia.mad_assignment_1.R;
 import au.edu.rmit.mckerrow.sofia.mad_assignment_1.model.BirdTrackable;
-import au.edu.rmit.mckerrow.sofia.mad_assignment_1.model.ReadFile;
 import au.edu.rmit.mckerrow.sofia.mad_assignment_1.model.TrackableInfo;
 import au.edu.rmit.mckerrow.sofia.mad_assignment_1.service.TestTrackingService;
 
@@ -23,6 +21,7 @@ public class DisplayTrackablesActivity extends AppCompatActivity {
     private static List<BirdTrackable> trackableList;
     private static Map<String, BirdTrackable> trackableMap;
     private TrackableInfo trackableInfo;
+    private static TrackableAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,14 +36,6 @@ public class DisplayTrackablesActivity extends AppCompatActivity {
         trackableList = trackableInfo.getTrackableList();
         trackableMap = trackableInfo.getTrackableMap();
 
-        for (int i = 0; i < trackableList.size(); i++) {
-            Log.i("listTag", trackableList.get(i).toString());
-        }
-
-        for (Map.Entry<String, BirdTrackable> entry : trackableMap.entrySet()) {
-            Log.i("myTag", entry.getKey()+ " : " + entry.getValue().toString());
-        }
-
         // Sort list alphabetically
         Collections.sort(trackableList, new Comparator<BirdTrackable>() {
             @Override
@@ -53,22 +44,28 @@ public class DisplayTrackablesActivity extends AppCompatActivity {
             }
         });
 
-        TrackableAdapter adapter = new TrackableAdapter(this, trackableList);
+        adapter = new TrackableAdapter(this, trackableList);
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.rvTrackables);
         recyclerView.setAdapter(adapter);
 
-        setUpFilter();
+        setUpSpinner();
 
         // TestTrackingService.test(this);
     }
 
     // Set category names in spinner
-    private void setUpFilter() {
+    private void setUpSpinner() {
         Spinner spinner = (Spinner) findViewById(R.id.filterSpinner);
         ArrayAdapter<CharSequence> arrayAdapter = ArrayAdapter.createFromResource(this,R.array.categories,android.R.layout.simple_spinner_item);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(arrayAdapter);
+
+        spinner.setOnItemSelectedListener(new FilterController(this));
+    }
+
+    public static TrackableAdapter getAdapter() {
+        return adapter;
     }
 
 }
