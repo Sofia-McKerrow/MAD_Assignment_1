@@ -2,6 +2,8 @@ package au.edu.rmit.mckerrow.sofia.mad_assignment_1.model;
 
 import android.content.Context;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -11,7 +13,14 @@ public class TrackableInfo {
     private static Context mContext;
     private List<BirdTrackable> trackableList;
     private Map<String, BirdTrackable> trackableMap;
-    private static final List<BirdTrackable> FINAL_TRACKABLE_LIST = ReadFile.getTrackableList();
+    private static final List<BirdTrackable> FINAL_TRACKABLE_LIST;
+
+    static {
+        List trackables = new ArrayList<BirdTrackable>();
+        trackables = ReadFile.getTrackableList();
+
+        FINAL_TRACKABLE_LIST = Collections.unmodifiableList(trackables);
+    }
 
     // Constructor for singleton
     private TrackableInfo() {
