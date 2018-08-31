@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -15,7 +14,6 @@ import java.util.Map;
 
 import au.edu.rmit.mckerrow.sofia.mad_assignment_1.R;
 import au.edu.rmit.mckerrow.sofia.mad_assignment_1.model.BirdTrackable;
-import au.edu.rmit.mckerrow.sofia.mad_assignment_1.model.ReadFile;
 import au.edu.rmit.mckerrow.sofia.mad_assignment_1.model.TrackableInfo;
 import au.edu.rmit.mckerrow.sofia.mad_assignment_1.service.TrackingService;
 
@@ -33,7 +31,7 @@ public class DisplayTrackableRouteInfoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_display_trackable_route_info);
+        setContentView(R.layout.trackable_route_info);
 
         // Check if a trackableInfo singleton has been created
         if (trackableInfo == null) {

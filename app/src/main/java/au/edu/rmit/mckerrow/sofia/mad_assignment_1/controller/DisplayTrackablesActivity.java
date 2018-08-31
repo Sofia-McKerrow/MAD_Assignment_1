@@ -3,7 +3,6 @@ package au.edu.rmit.mckerrow.sofia.mad_assignment_1.controller;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
@@ -15,7 +14,6 @@ import java.util.Map;
 import au.edu.rmit.mckerrow.sofia.mad_assignment_1.R;
 import au.edu.rmit.mckerrow.sofia.mad_assignment_1.model.BirdTrackable;
 import au.edu.rmit.mckerrow.sofia.mad_assignment_1.model.TrackableInfo;
-import au.edu.rmit.mckerrow.sofia.mad_assignment_1.service.TestTrackingService;
 
 public class DisplayTrackablesActivity extends AppCompatActivity {
 
@@ -29,7 +27,7 @@ public class DisplayTrackablesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_display_trackables_list);
+        setContentView(R.layout.trackables_list);
 
 //        // Check if a trackableInfo singleton has been created
         if (trackableInfo == null) {
