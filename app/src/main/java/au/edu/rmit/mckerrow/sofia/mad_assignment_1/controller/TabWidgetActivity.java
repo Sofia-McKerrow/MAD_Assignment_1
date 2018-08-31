@@ -4,7 +4,6 @@ import android.app.TabActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TabHost;
-import android.widget.Toast;
 
 import au.edu.rmit.mckerrow.sofia.mad_assignment_1.R;
 

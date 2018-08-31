@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- from http://developer.android.com/resources/tutorials/views/hello-tablelayout.html -->
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:stretchColumns="1,2" >
+
+    <TableRow>
+        <TextView
+            android:layout_column="1"
+            android:padding="3dip"
+            android:text="@string/trackable" />
+
+        <TextView
+            android:gravity="right"
+            android:padding="3dip" />
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:layout_column="1"
+            android:padding="@dimen/table_padding"
+            android:text="@string/tracking_title" />
+
+        <TextView
+            android:gravity="right"
+            android:padding="@dimen/table_padding" />
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:layout_column="1"
+            android:padding="@dimen/table_padding"
+            android:text="@string/meet_date" />
+
+        <TextView
+            android:gravity="right"
+            android:padding="@dimen/table_padding" />
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:layout_column="1"
+            android:padding="@dimen/table_padding"
+            android:text="@string/meet_time" />
+
+        <TextView
+            android:gravity="right"
+            android:padding="@dimen/table_padding" />
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:layout_column="1"
+            android:padding="@dimen/table_padding"
+            android:text="@string/meet_location" />
+
+        <TextView
+            android:gravity="right"
+            android:padding="@dimen/table_padding" />
+    </TableRow>
+
+</TableLayout>

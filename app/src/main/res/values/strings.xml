@@ -9,4 +9,11 @@
         <item>Sea Bird</item>
         <item>Water Bird</item>
     </string-array>
+    <string name="trackings_list_name">Trackings List</string>
+    <string name="add_tracking">Add tracking</string>
+    <string name="trackable">Trackable</string>
+    <string name="tracking_title">Title</string>
+    <string name="meet_date">Date</string>
+    <string name="meet_time">Meet Time</string>
+    <string name="meet_location">Meet Location</string>
 </resources>
