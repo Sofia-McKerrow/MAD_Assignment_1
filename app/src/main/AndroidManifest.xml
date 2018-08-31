@@ -10,20 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".controller.TabWidgetActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
             android:name=".controller.DisplayTrackablesActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".controller.DisplayTrackableRouteInfoActivity"
@@ -34,9 +21,12 @@
         </activity>
         <activity
             android:name=".controller.DisplayTrackingsListActivity">
+        </activity>
+        <activity
+            android:name=".controller.TabWidgetActivity"
+            android:theme="@style/TabWidgetTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
