@@ -7,6 +7,8 @@ import android.widget.AdapterView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import au.edu.rmit.mckerrow.sofia.mad_assignment_1.model.BirdTrackable;
@@ -31,18 +33,28 @@ public class FilterController implements AdapterView.OnItemSelectedListener {
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//        List<BirdTrackable> tempList = new ArrayList<BirdTrackable>();
-//        tempList.addAll(TrackableInfo.getFINAL_TRACKABLE_LIST());
+
         adapter = DisplayTrackablesActivity.getAdapter();
 
         filteredList = new ArrayList<>();
-        trackableList = new ArrayList<>();
-        trackableList.addAll(TrackableInfo.getFINAL_TRACKABLE_LIST());
-        // trackableList = ReadFile.getTrackableList();
 
-        for (int i = 0; i < trackableList.size(); i++) {
-            Log.i(LOG_TAG, "trackableList " + trackableList.get(i).toString());
+        if (trackableList != null) {
+            trackableList.clear();
         }
+        ReadFile.readTrackableFile(mContext);
+        trackableList = ReadFile.getTrackableList();
+
+        // Sort list alphabetically
+        Collections.sort(trackableList, new Comparator<BirdTrackable>() {
+            @Override
+            public int compare(BirdTrackable o1, BirdTrackable o2) {
+                return o1.getName().compareTo(o2.getName());
+            }
+        });
+
+//        for (int i = 0; i < trackableList.size(); i++) {
+//            Log.i(LOG_TAG, "trackableList " + trackableList.get(i).toString());
+//        }
 
         if (filteredList != null) {
             filteredList.clear();
@@ -53,6 +65,7 @@ public class FilterController implements AdapterView.OnItemSelectedListener {
             case 0:
                filteredList.addAll(trackableList);
                adapter.notifyDataSetChanged();
+
                break;
             case 1:
                 // If Bird of Prey category is selected

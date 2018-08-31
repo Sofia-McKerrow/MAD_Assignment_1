@@ -52,12 +52,7 @@ public class DisplayTrackablesActivity extends AppCompatActivity {
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.rvTrackables);
         recyclerView.setAdapter(adapter);
 
-        Spinner spinner = (Spinner) findViewById(R.id.filterSpinner);
-        ArrayAdapter<CharSequence> arrayAdapter = ArrayAdapter.createFromResource(this,R.array.categories,android.R.layout.simple_spinner_item);
-        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(arrayAdapter);
-
-        spinner.setOnItemSelectedListener(new FilterController(this));
+        setUpSpinner();
 
         // TestTrackingService.test(this);
     }
@@ -69,7 +64,11 @@ public class DisplayTrackablesActivity extends AppCompatActivity {
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(arrayAdapter);
 
-        //spinner.setOnItemSelectedListener(new FilterController(this));
+        // Stop onItemSelected() in FilterController from being initialised when the app is first started
+        spinner.setSelected(false);
+        spinner.setSelection(0, true);
+
+        spinner.setOnItemSelectedListener(new FilterController(this));
     }
 
     public static TrackableAdapter getAdapter() {
