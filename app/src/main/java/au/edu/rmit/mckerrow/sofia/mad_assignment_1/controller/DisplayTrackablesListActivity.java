@@ -16,21 +16,19 @@ import au.edu.rmit.mckerrow.sofia.mad_assignment_1.R;
 import au.edu.rmit.mckerrow.sofia.mad_assignment_1.model.BirdTrackable;
 import au.edu.rmit.mckerrow.sofia.mad_assignment_1.model.TrackableInfo;
 
-public class DisplayTrackablesActivity extends AppCompatActivity {
+public class DisplayTrackablesListActivity extends AppCompatActivity {
 
     private static List<BirdTrackable> trackableList;
     private static Map<String, BirdTrackable> trackableMap;
     private TrackableInfo trackableInfo;
     private static TrackableAdapter adapter;
 
-    private static final String LOG_TAG = "MyTag";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.trackables_list);
 
-//        // Check if a trackableInfo singleton has been created
+        // Check if a trackableInfo singleton has been created
         if (trackableInfo == null) {
             trackableInfo = TrackableInfo.getSingletonInstance(this);
         }

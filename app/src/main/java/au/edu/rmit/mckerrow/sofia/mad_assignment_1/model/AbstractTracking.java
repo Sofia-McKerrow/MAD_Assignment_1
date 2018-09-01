@@ -1,29 +1,20 @@
 package au.edu.rmit.mckerrow.sofia.mad_assignment_1.model;
 
-import android.content.Context;
-import android.content.res.Resources;
-import android.util.Log;
-
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
 
-import au.edu.rmit.mckerrow.sofia.mad_assignment_1.R;
-
-public abstract class AbstractTracking implements Tracking {
+public abstract class AbstractTracking {
 
     private String trackingID;
     private String trackableID;
     private String title;
-    private Date startTime;
-    private Date finishTime;
-    private Date meetTime;
+    private String startTime;
+    private String finishTime;
+    private String meetTime;
     private String currentLocation;
     private String meetLocation;
 
-    public AbstractTracking(String trackingID, String trackableID, String title, Date startTime, Date finishTime,
-                            Date meetTime, String currentLocation, String meetLocation) {
+    public AbstractTracking(String trackingID, String trackableID, String title, String startTime, String finishTime,
+                            String meetTime, String currentLocation, String meetLocation) {
         this.trackingID = trackingID;
         this.trackableID = trackableID;
         this.title = title;
@@ -58,27 +49,27 @@ public abstract class AbstractTracking implements Tracking {
         this.title = title;
     }
 
-    public Date getStartTime() {
+    public String getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Date startTime) {
+    public void setStartTime(String startTime) {
         this.startTime = startTime;
     }
 
-    public Date getFinishTime() {
+    public String getFinishTime() {
         return finishTime;
     }
 
-    public void setFinishTime(Date finishTime) {
+    public void setFinishTime(String finishTime) {
         this.finishTime = finishTime;
     }
 
-    public Date getMeetTime() {
+    public String getMeetTime() {
         return meetTime;
     }
 
-    public void setMeetTime(Date meetTime) {
+    public void setMeetTime(String meetTime) {
         this.meetTime = meetTime;
     }
 

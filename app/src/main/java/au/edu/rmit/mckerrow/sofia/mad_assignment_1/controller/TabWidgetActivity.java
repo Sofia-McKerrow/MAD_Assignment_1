@@ -1,6 +1,5 @@
 package au.edu.rmit.mckerrow.sofia.mad_assignment_1.controller;
 
-import android.app.TabActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TabHost;
@@ -23,7 +22,7 @@ public class TabWidgetActivity extends android.app.TabActivity {
         // Set "Bird Trackables" as the indicator
         spec.setIndicator("Trackables");
         // Create an intent to launch an activity for the tab
-        intent = new Intent(this, DisplayTrackablesActivity.class);
+        intent = new Intent(this, DisplayTrackablesListActivity.class);
         spec.setContent(intent);
         tabHost.addTab(spec);
 

@@ -10,14 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".controller.DisplayTrackablesActivity">
+            android:name=".controller.DisplayTrackablesListActivity">
         </activity>
         <activity
             android:name=".controller.DisplayTrackableRouteInfoActivity"
-            android:parentActivityName=".controller.DisplayTrackablesActivity">
+            android:parentActivityName=".controller.DisplayTrackablesListActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".controller.DisplayTrackablesActivity" />
+                android:value=".controller.DisplayTrackablesListActivity" />
         </activity>
         <activity
             android:name=".controller.DisplayTrackingsListActivity">

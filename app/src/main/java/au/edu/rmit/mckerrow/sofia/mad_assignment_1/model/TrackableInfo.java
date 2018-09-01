@@ -13,14 +13,6 @@ public class TrackableInfo {
     private static Context mContext;
     private List<BirdTrackable> trackableList;
     private Map<String, BirdTrackable> trackableMap;
-    private static final List<BirdTrackable> FINAL_TRACKABLE_LIST;
-
-    static {
-        List trackables = new ArrayList<BirdTrackable>();
-        trackables = ReadFile.getTrackableList();
-
-        FINAL_TRACKABLE_LIST = Collections.unmodifiableList(trackables);
-    }
 
     // Constructor for singleton
     private TrackableInfo() {
@@ -62,9 +54,5 @@ public class TrackableInfo {
 
     public void setTrackableMap(Map<String, BirdTrackable> trackableMap) {
         this.trackableMap = trackableMap;
-    }
-
-    public static List<BirdTrackable> getFINAL_TRACKABLE_LIST() {
-        return FINAL_TRACKABLE_LIST;
     }
 }

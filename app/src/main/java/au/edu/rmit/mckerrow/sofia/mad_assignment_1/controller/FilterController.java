@@ -30,7 +30,7 @@ public class FilterController implements AdapterView.OnItemSelectedListener {
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-        adapter = DisplayTrackablesActivity.getAdapter();
+        adapter = DisplayTrackablesListActivity.getAdapter();
 
         filteredList = new ArrayList<>();
 
