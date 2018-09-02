@@ -14,6 +14,7 @@ import java.util.List;
 import au.edu.rmit.mckerrow.sofia.mad_assignment_1.R;
 import au.edu.rmit.mckerrow.sofia.mad_assignment_1.model.BirdTrackable;
 import au.edu.rmit.mckerrow.sofia.mad_assignment_1.model.BirdTracking;
+import au.edu.rmit.mckerrow.sofia.mad_assignment_1.model.ReadFile;
 import au.edu.rmit.mckerrow.sofia.mad_assignment_1.model.TrackableInfo;
 import au.edu.rmit.mckerrow.sofia.mad_assignment_1.model.TrackingInfo;
 
@@ -63,8 +64,14 @@ public class SaveTrackingButtonController implements View.OnClickListener{
         String trackableID = null;
         Spinner trackableSpinner = (Spinner) activity.findViewById(R.id.trackableNameSpinner);
         String trackableName = trackableSpinner.getSelectedItem().toString();
-        trackableInfo = TrackableInfo.getSingletonInstance(mContext);
-        trackableList = trackableInfo.getTrackableList();
+
+        if (trackableList != null) {
+            trackableList.clear();
+        }
+        ReadFile.readTrackableFile(mContext);
+        trackableList = ReadFile.getTrackableList();
+//        trackableInfo = TrackableInfo.getSingletonInstance(mContext);
+//        trackableList = trackableInfo.getTrackableList();
 
         // Get trackable ID from the selected trackable name
         for (int i = 0; i < trackableList.size(); i++) {

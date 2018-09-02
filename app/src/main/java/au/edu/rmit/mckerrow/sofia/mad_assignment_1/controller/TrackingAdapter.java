@@ -58,10 +58,10 @@ public class TrackingAdapter extends RecyclerView.Adapter<TrackingAdapter.ViewHo
         public TextView titleValue;
         public TextView dateLabel;
         public TextView dateValue;
-        public TextView timeLabel;
-        public TextView timeValue;
         public TextView locationLabel;
         public TextView locationValue;
+        public Button editButton;
+        public Button removeButton;
 
         private BirdTracking currentTracking;
         private int position;
@@ -79,6 +79,8 @@ public class TrackingAdapter extends RecyclerView.Adapter<TrackingAdapter.ViewHo
             dateValue = (TextView) itemView.findViewById(R.id.dateValue);
             locationLabel = (TextView) itemView.findViewById(R.id.locationLabel);
             locationValue = (TextView) itemView.findViewById(R.id.locationValue);
+            editButton = (Button) itemView.findViewById(R.id.editTracking);
+            removeButton = (Button) itemView.findViewById(R.id.removeTracking);
 
             mView = itemView;
         }

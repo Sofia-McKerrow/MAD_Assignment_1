@@ -1,82 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- from http://developer.android.com/resources/tutorials/views/hello-tablelayout.html -->
 
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/trackingItemTable"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:stretchColumns="1" >
+    android:orientation="vertical">
 
-    <TableRow
-        android:id="@+id/trackableRow"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/trackableNameLabel"
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/trackingItemTable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="1" >
+
+        <TableRow
+            android:id="@+id/trackableRow"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/trackableNameLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="3dip"
+                android:text="@string/trackable" />
+
+            <TextView
+                android:id="@+id/trackableNameValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="3dip" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/titleRow"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/titleLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="3dip"
+                android:text="@string/tracking_title" />
+
+            <TextView
+                android:id="@+id/titleValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="3dip" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/dateRow"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/dateLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="3dip"
+                android:text="@string/meet_date" />
+
+            <TextView
+                android:id="@+id/dateValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="3dip" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/locationRow"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/locationLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="3dip"
+                android:text="@string/meet_location" />
+
+            <TextView
+                android:id="@+id/locationValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="3dip" />
+        </TableRow>
+
+    </TableLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/editTracking"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="3dip"
-            android:text="@string/trackable" />
+            android:text="@string/edit_tracking"/>
 
-        <TextView
-            android:id="@+id/trackableNameValue"
+        <Button
+            android:id="@+id/removeTracking"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="3dip" />
-    </TableRow>
+            android:text="@string/remove_tracking"/>
+    </LinearLayout>
 
-    <TableRow
-        android:id="@+id/titleRow"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/titleLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="3dip"
-            android:text="@string/tracking_title" />
+</LinearLayout>
 
-        <TextView
-            android:id="@+id/titleValue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="3dip" />
-    </TableRow>
-
-    <TableRow
-        android:id="@+id/dateRow"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/dateLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="3dip"
-            android:text="@string/meet_date" />
-
-        <TextView
-            android:id="@+id/dateValue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="3dip" />
-    </TableRow>
-
-    <TableRow
-        android:id="@+id/locationRow"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/locationLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="3dip"
-            android:text="@string/meet_location" />
-
-        <TextView
-            android:id="@+id/locationValue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="3dip" />
-    </TableRow>
-
-</TableLayout>
