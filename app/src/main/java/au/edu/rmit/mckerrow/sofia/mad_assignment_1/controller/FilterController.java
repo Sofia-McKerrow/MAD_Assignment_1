@@ -53,7 +53,6 @@ public class FilterController implements AdapterView.OnItemSelectedListener {
             case 0:
                filteredList.addAll(trackableList);
                adapter.notifyDataSetChanged();
-
                break;
             case 1:
                 // If Bird of Prey category is selected
@@ -90,7 +89,6 @@ public class FilterController implements AdapterView.OnItemSelectedListener {
                 adapter.notifyDataSetChanged();
                 break;
         }
-
     }
 
     @Override

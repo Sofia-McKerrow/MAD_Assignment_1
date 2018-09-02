@@ -42,7 +42,6 @@ public class DisplayTrackableRouteInfoActivity extends AppCompatActivity {
         trackableMap = trackableInfo.getTrackableMap();
         String trackableID = getIntent().getExtras().getString(TrackableAdapter.TRACKABLE_ID_KEY);
         BirdTrackable birdTrackable = trackableMap.get(trackableID);
-        // Toast.makeText(this, "Received item " + birdTrackable.getName(), Toast.LENGTH_SHORT).show();
 
         trackableName = (TextView) findViewById(R.id.trackableName);
         trackableImage = (ImageView) findViewById(R.id.trackableImage);

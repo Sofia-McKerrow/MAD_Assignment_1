@@ -37,14 +37,5 @@ public class TabWidgetActivity extends android.app.TabActivity {
 
         // Set trackables tab to open when app first opens
         tabHost.setCurrentTab(0);
-
-//        tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
-//            @Override
-//            public void onTabChanged(String tabId) {
-//                // Display the name of the tab whenever a tab is changed
-//                Toast.makeText(getApplicationContext(), tabId, Toast.LENGTH_SHORT).show();
-//            }
-//        });
-
     }
 }

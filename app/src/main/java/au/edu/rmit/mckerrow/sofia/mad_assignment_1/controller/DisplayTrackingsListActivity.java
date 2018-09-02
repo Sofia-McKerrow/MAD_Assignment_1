@@ -28,11 +28,6 @@ public class DisplayTrackingsListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.trackings_list);
 
-//        trackingList = new ArrayList<BirdTracking>();
-//        trackingList.add(new BirdTracking("tracking1", "1", "Lunch with magpie, Jells Park",
-//                "05/07/2018 1:05:00 PM", "05/07/2018 1:10:00 PM", "05/07/2018 1:05:00", "-37.817987, 144.956944",
-//                "-37.820666, 144.958277"));
-
         // Check if a trackableInfo singleton has been created
         if (trackingInfo == null) {
             trackingInfo = TrackingInfo.getSingletonInstance(this);

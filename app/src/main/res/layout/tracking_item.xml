@@ -20,14 +20,18 @@
                 android:id="@+id/trackableNameLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="3dip"
-                android:text="@string/trackable" />
+                android:padding="@dimen/table_padding"
+                android:text="@string/trackable"
+                android:textColor="@color/black"
+                android:textSize="@dimen/tracking_item_text_size"/>
 
             <TextView
                 android:id="@+id/trackableNameValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="3dip" />
+                android:padding="@dimen/table_padding"
+                android:textColor="@color/black"
+                android:textSize="@dimen/tracking_item_text_size"/>
         </TableRow>
 
         <TableRow
@@ -38,14 +42,18 @@
                 android:id="@+id/titleLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="3dip"
-                android:text="@string/tracking_title" />
+                android:padding="@dimen/table_padding"
+                android:text="@string/tracking_title"
+                android:textColor="@color/black"
+                android:textSize="@dimen/tracking_item_text_size"/>
 
             <TextView
                 android:id="@+id/titleValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="3dip" />
+                android:padding="@dimen/table_padding"
+                android:textColor="@color/black"
+                android:textSize="@dimen/tracking_item_text_size"/>
 
         </TableRow>
 
@@ -57,14 +65,18 @@
                 android:id="@+id/dateLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="3dip"
-                android:text="@string/meet_date" />
+                android:padding="@dimen/table_padding"
+                android:text="@string/meet_date"
+                android:textColor="@color/black"
+                android:textSize="@dimen/tracking_item_text_size"/>
 
             <TextView
                 android:id="@+id/dateValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="3dip" />
+                android:padding="@dimen/table_padding"
+                android:textColor="@color/black"
+                android:textSize="@dimen/tracking_item_text_size"/>
 
         </TableRow>
 
@@ -76,14 +88,18 @@
                 android:id="@+id/locationLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="3dip"
-                android:text="@string/meet_location" />
+                android:padding="@dimen/table_padding"
+                android:text="@string/meet_location"
+                android:textColor="@color/black"
+                android:textSize="@dimen/tracking_item_text_size"/>
 
             <TextView
                 android:id="@+id/locationValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="3dip" />
+                android:padding="@dimen/table_padding"
+                android:textColor="@color/black"
+                android:textSize="@dimen/tracking_item_text_size"/>
         </TableRow>
 
     </TableLayout>

@@ -4,6 +4,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
@@ -14,6 +15,7 @@ import java.util.Map;
 
 import au.edu.rmit.mckerrow.sofia.mad_assignment_1.R;
 import au.edu.rmit.mckerrow.sofia.mad_assignment_1.model.BirdTrackable;
+import au.edu.rmit.mckerrow.sofia.mad_assignment_1.model.ReadFile;
 import au.edu.rmit.mckerrow.sofia.mad_assignment_1.model.TrackableInfo;
 
 public class DisplayTrackablesListActivity extends AppCompatActivity {
@@ -28,13 +30,11 @@ public class DisplayTrackablesListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.trackables_list);
 
-        // Check if a trackableInfo singleton has been created
-        if (trackableInfo == null) {
-            trackableInfo = TrackableInfo.getSingletonInstance(this);
+        if (trackableList != null) {
+            trackableList.clear();
         }
-
-        trackableList = trackableInfo.getTrackableList();
-        trackableMap = trackableInfo.getTrackableMap();
+        ReadFile.readTrackableFile(this);
+        trackableList = ReadFile.getTrackableList();
 
         // Sort list alphabetically
         Collections.sort(trackableList, new Comparator<BirdTrackable>() {
@@ -62,8 +62,7 @@ public class DisplayTrackablesListActivity extends AppCompatActivity {
         spinner.setAdapter(arrayAdapter);
 
         // Stop onItemSelected() in FilterController from being initialised when the app is first started
-        int position = spinner.getSelectedItemPosition();
-        spinner.setSelection(position, false);
+        spinner.setSelection(0, false);
 
         spinner.setOnItemSelectedListener(new FilterController(this));
     }

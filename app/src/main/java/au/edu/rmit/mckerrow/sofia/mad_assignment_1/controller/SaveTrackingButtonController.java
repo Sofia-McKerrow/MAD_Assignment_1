@@ -38,9 +38,7 @@ public class SaveTrackingButtonController implements View.OnClickListener{
 
         adapter = DisplayTrackingsListActivity.getAdapter();
         adapter.notifyDataSetChanged();
-//        int position = 0;
-//        adapter.notifyItemInserted(position);
-//        adapter.notifyItemRangeChanged(position, trackingList.size());
+
         mContext.startActivity(new Intent(mContext, TabWidgetActivity.class));
     }
 
@@ -85,5 +83,9 @@ public class SaveTrackingButtonController implements View.OnClickListener{
 
         trackingList.add(tracking);
         trackingInfo.setTrackingList(trackingList);
+    }
+
+    public void editTracking(AddEditTrackingActivity activity) {
+        String trackingID = activity.getIntent().getExtras().getString(TrackingAdapter.TRACKING_ID_KEY);
     }
 }

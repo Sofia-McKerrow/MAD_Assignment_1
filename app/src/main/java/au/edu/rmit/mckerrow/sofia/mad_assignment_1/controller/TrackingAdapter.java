@@ -1,12 +1,14 @@
 package au.edu.rmit.mckerrow.sofia.mad_assignment_1.controller;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -25,6 +27,7 @@ public class TrackingAdapter extends RecyclerView.Adapter<TrackingAdapter.ViewHo
     private List<BirdTracking> trackingList;
     private List<BirdTrackable> trackableList;
     private TrackableInfo trackableInfo;
+    public static final String TRACKING_ID_KEY = "tracking_id_key";
 
     public TrackingAdapter(Context mContext, List<BirdTracking> trackingList) {
         this.mContext = mContext;

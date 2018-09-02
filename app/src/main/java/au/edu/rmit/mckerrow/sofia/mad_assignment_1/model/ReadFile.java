@@ -47,7 +47,13 @@ public class ReadFile {
                 description = values[2];
                 url = values[3];
                 category = values[4];
-                image = values[5];
+
+                if (values.length < 6) {
+                        image = "magpie.jpg";
+                }
+                else {
+                    image = values[5];
+                }
 
                 BirdTrackable trackableInfo = new BirdTrackable(trackableID, name, description, url, category, image);
                 trackableList.add(trackableInfo);
