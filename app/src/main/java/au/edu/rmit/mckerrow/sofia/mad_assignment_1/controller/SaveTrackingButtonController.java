@@ -39,9 +39,10 @@ public class SaveTrackingButtonController implements View.OnClickListener{
         addTracking(activity);
 
         adapter = DisplayTrackingsListActivity.getAdapter();
-        int position = 0;
-        adapter.notifyItemInserted(position);
-        adapter.notifyItemRangeChanged(position, trackingList.size());
+        adapter.notifyDataSetChanged();
+//        int position = 0;
+//        adapter.notifyItemInserted(position);
+//        adapter.notifyItemRangeChanged(position, trackingList.size());
         mContext.startActivity(new Intent(mContext, DisplayTrackingsListActivity.class));
     }
 
@@ -73,10 +74,6 @@ public class SaveTrackingButtonController implements View.OnClickListener{
         for (int i = 0; i < trackingList.size(); i++) {
             Log.i(LOG_TAG, "trackableList " + trackingList.get(i).toString());
         }
-
-//        adapter.notifyDataSetChanged();
-
-        // adapter.notifyItemInserted(trackingList.size());
 
     }
 }
