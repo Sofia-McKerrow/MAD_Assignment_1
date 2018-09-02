@@ -20,4 +20,26 @@
     <string name="enter_title">Enter title</string>
     <string name="enter_meet_date">Enter meeting date</string>
     <string name="save_tracking">Save</string>
+    <string name="select_trackable">Select trackable</string>
+    <string-array name="spinner_trackables">
+        <item>Australian Magpie</item>
+        <item>Kookaburra</item>
+        <item>Sulphur-Crested Cockatoo</item>
+    </string-array>
+    <string name="select_meet_date">Select meeting date/time</string>
+    <string-array name="meet_dates">
+        <item>05/07/2018 1:00:00 PM</item>
+        <item>05/07/2018 1:05:00 PM</item>
+        <item>05/07/2018 1:10:00 PM</item>
+        <item>05/07/2018 1:15:00 PM</item>
+        <item>05/07/2018 1:20:00 PM</item>
+        <item>05/07/2018 1:25:00 PM</item>
+        <item>05/07/2018 1:30:00 PM</item>
+        <item>05/07/2018 1:35:00 PM</item>
+        <item>05/07/2018 1:40:00 PM</item>
+        <item>05/07/2018 1:45:00 PM</item>
+        <item>05/07/2018 1:50:00 PM</item>
+        <item>05/07/2018 1:55:00 PM</item>
+    </string-array>
+
 </resources>

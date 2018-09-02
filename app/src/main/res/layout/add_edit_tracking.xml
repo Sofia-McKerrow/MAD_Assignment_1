@@ -7,22 +7,29 @@
         android:id="@+id/enterTrackableName"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/enter_trackable_name" />
+        android:text="@string/select_trackable"
+        android:textColor="@color/black"/>
 
-    <EditText
+    <Spinner
+        android:id="@+id/trackableNameSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/enterTrackableName" />
+
+    <!--EditText
         android:id="@+id/trackableNameEntry"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/enterTrackableName"
         android:background="@android:drawable/editbox_background"
         android:inputType="text"
-        android:textColor="#000" />
+        android:textColor="#000" /-->
 
     <TextView
         android:id="@+id/enterTitle"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/trackableNameEntry"
+        android:layout_below="@id/trackableNameSpinner"
         android:text="@string/enter_title" />
 
     <EditText
@@ -39,23 +46,29 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/titleEntry"
-        android:text="@string/enter_meet_date" />
+        android:text="@string/select_meet_date" />
 
-    <EditText
+    <Spinner
+        android:id="@+id/meetDateSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/enterMeetDate"/>
+
+    <!--EditText
         android:id="@+id/meetDateEntry"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/enterMeetDate"
         android:background="@android:drawable/editbox_background"
         android:inputType="text"
-        android:textColor="#000" />
+        android:textColor="#000" /-->
 
     <Button
         android:id="@+id/saveTracking"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_below="@id/meetDateEntry"
+        android:layout_below="@id/meetDateSpinner"
         android:layout_marginLeft="10dip"
         android:text="@string/save_tracking" />
 

@@ -15,12 +15,16 @@ import java.io.InputStream;
 import java.util.List;
 
 import au.edu.rmit.mckerrow.sofia.mad_assignment_1.R;
+import au.edu.rmit.mckerrow.sofia.mad_assignment_1.model.BirdTrackable;
 import au.edu.rmit.mckerrow.sofia.mad_assignment_1.model.BirdTracking;
+import au.edu.rmit.mckerrow.sofia.mad_assignment_1.model.TrackableInfo;
 
 public class TrackingAdapter extends RecyclerView.Adapter<TrackingAdapter.ViewHolder>{
     public static final String TRACKABLE_ID_KEY = "trackable_id_key";
     private Context mContext;
     private List<BirdTracking> trackingList;
+    private List<BirdTrackable> trackableList;
+    private TrackableInfo trackableInfo;
 
     public TrackingAdapter(Context mContext, List<BirdTracking> trackingList) {
         this.mContext = mContext;
@@ -80,7 +84,20 @@ public class TrackingAdapter extends RecyclerView.Adapter<TrackingAdapter.ViewHo
         }
 
         public void setData(BirdTracking currentTracking, int position) {
-            this.trackableName.setText("Magpie");
+            String trackableID = currentTracking.getTrackableID();
+            String trackableName = null;
+            trackableInfo = TrackableInfo.getSingletonInstance(mContext);
+            trackableList = trackableInfo.getTrackableList();
+
+            // Get trackable name for selected trackable from the trackableID of the currentTracking object
+            for (int i = 0; i < trackableList.size(); i++) {
+                if (trackableList.get(i).getTrackableID() == Integer.parseInt(trackableID)) {
+                    trackableName = trackableList.get(i).getName();
+                    break;
+                }
+            }
+
+            this.trackableName.setText(trackableName);
             this.titleValue.setText(currentTracking.getTitle());
             this.dateValue.setText(currentTracking.getMeetTime());
             this.locationValue.setText(currentTracking.getMeetLocation());
