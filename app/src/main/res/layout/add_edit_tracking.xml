@@ -51,7 +51,7 @@
         android:textColor="#000" />
 
     <Button
-        android:id="@+id/ok"
+        android:id="@+id/saveTracking"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"

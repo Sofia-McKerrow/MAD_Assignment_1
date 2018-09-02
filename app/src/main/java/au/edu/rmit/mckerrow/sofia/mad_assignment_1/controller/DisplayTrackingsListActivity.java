@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -20,22 +21,31 @@ public class DisplayTrackingsListActivity extends AppCompatActivity {
     private static TrackingAdapter adapter;
     private Button addTracking;
 
+    private static final String LOG_TAG = "DisplayTag";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.trackings_list);
 
-        trackingList = new ArrayList<BirdTracking>();
-        trackingList.add(new BirdTracking("tracking1", "1", "Lunch with magpie, Jells Park",
-                "05/07/2018 1:05:00 PM", "05/07/2018 1:10:00 PM", "05/07/2018 1:05:00", "-37.817987, 144.956944",
-                "-37.820666, 144.958277"));
+//        trackingList = new ArrayList<BirdTracking>();
+//        trackingList.add(new BirdTracking("tracking1", "1", "Lunch with magpie, Jells Park",
+//                "05/07/2018 1:05:00 PM", "05/07/2018 1:10:00 PM", "05/07/2018 1:05:00", "-37.817987, 144.956944",
+//                "-37.820666, 144.958277"));
 
         // Check if a trackableInfo singleton has been created
         if (trackingInfo == null) {
             trackingInfo = TrackingInfo.getSingletonInstance(this);
         }
 
-        trackingInfo.setTrackingList(trackingList);
+        trackingList = trackingInfo.getTrackingList();
+
+        if (trackingList == null) {
+            trackingList = new ArrayList<BirdTracking>();
+        }
+        for (int i = 0; i < trackingList.size(); i++) {
+            Log.i(LOG_TAG, "Tracking List " + trackingList.get(i).toString());
+        }
 
         adapter = new TrackingAdapter(this, trackingList);
 
@@ -44,6 +54,9 @@ public class DisplayTrackingsListActivity extends AppCompatActivity {
 
         addTracking = (Button) findViewById(R.id.addTracking);
         addTracking.setOnClickListener(new AddTrackingButtonController(this));
-//
+    }
+
+    public static TrackingAdapter getAdapter() {
+        return adapter;
     }
 }

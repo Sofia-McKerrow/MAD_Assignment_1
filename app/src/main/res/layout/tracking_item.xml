@@ -62,24 +62,6 @@
     </TableRow>
 
     <TableRow
-        android:id="@+id/timeRow"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/timeLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="3dip"
-            android:text="@string/meet_time" />
-
-        <TextView
-            android:id="@+id/timeValue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="3dip" />
-    </TableRow>
-
-    <TableRow
         android:id="@+id/locationRow"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">

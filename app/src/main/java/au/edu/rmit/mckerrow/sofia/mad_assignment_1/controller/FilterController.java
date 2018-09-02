@@ -48,10 +48,6 @@ public class FilterController implements AdapterView.OnItemSelectedListener {
             }
         });
 
-        for (int i = 0; i < trackableList.size(); i++) {
-            Log.i(LOG_TAG, "trackableList " + trackableList.get(i).toString());
-       }
-
         switch (position) {
             // If All is selected
             case 0:
@@ -64,10 +60,6 @@ public class FilterController implements AdapterView.OnItemSelectedListener {
                 category = "Bird of Prey";
                 filteredList = filterTrackableList(trackableList, category);
                 adapter.notifyDataSetChanged();
-
-//                for (int i = 0; i < trackableList.size(); i++) {
-//                    Log.i(LOG_TAG, "trackableList " + trackableList.get(i).toString());
-//                }
                 break;
 
             case 2:
@@ -75,10 +67,6 @@ public class FilterController implements AdapterView.OnItemSelectedListener {
                 category = "Bush Bird";
                 filteredList = filterTrackableList(trackableList, category);
                 adapter.notifyDataSetChanged();
-
-                for (int i = 0; i < trackableList.size(); i++) {
-                    Log.i(LOG_TAG, "trackableList " + trackableList.get(i).toString());
-                }
                 break;
 
             case 3:
