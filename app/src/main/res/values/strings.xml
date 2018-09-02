@@ -16,4 +16,8 @@
     <string name="meet_date">Date</string>
     <string name="meet_time">Meet Time</string>
     <string name="meet_location">Meet Location</string>
+    <string name="enter_trackable_name">Enter trackable name</string>
+    <string name="enter_title">Enter title</string>
+    <string name="enter_meet_date">Enter meeting date</string>
+    <string name="save_tracking">Save</string>
 </resources>

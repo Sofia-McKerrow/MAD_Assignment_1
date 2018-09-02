@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- from http://developer.android.com/resources/tutorials/views/hello-tablelayout.html -->
+
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/trackingItemTable"
     android:layout_width="match_parent"
@@ -14,7 +15,6 @@
             android:id="@+id/trackableNameLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_column="1"
             android:padding="3dip"
             android:text="@string/trackable" />
 
@@ -22,8 +22,7 @@
             android:id="@+id/trackableNameValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="3dip"
-            android:layout_column="2" />
+            android:padding="3dip" />
     </TableRow>
 
     <TableRow
@@ -34,7 +33,6 @@
             android:id="@+id/titleLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_column="1"
             android:padding="3dip"
             android:text="@string/tracking_title" />
 
@@ -42,8 +40,7 @@
             android:id="@+id/titleValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="3dip"
-            android:layout_column="2" />
+            android:padding="3dip" />
     </TableRow>
 
     <TableRow
@@ -54,7 +51,6 @@
             android:id="@+id/dateLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_column="1"
             android:padding="3dip"
             android:text="@string/meet_date" />
 
@@ -62,8 +58,7 @@
             android:id="@+id/dateValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="3dip"
-            android:layout_column="2" />
+            android:padding="3dip" />
     </TableRow>
 
     <TableRow
@@ -74,7 +69,6 @@
             android:id="@+id/timeLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_column="1"
             android:padding="3dip"
             android:text="@string/meet_time" />
 
@@ -82,8 +76,7 @@
             android:id="@+id/timeValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="3dip"
-            android:layout_column="2" />
+            android:padding="3dip" />
     </TableRow>
 
     <TableRow
@@ -94,7 +87,6 @@
             android:id="@+id/locationLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_column="1"
             android:padding="3dip"
             android:text="@string/meet_location" />
 
@@ -102,8 +94,7 @@
             android:id="@+id/locationValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="3dip"
-            android:layout_column="2" />
+            android:padding="3dip" />
     </TableRow>
 
 </TableLayout>

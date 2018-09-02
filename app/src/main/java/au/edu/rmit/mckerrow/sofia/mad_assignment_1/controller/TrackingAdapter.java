@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -37,13 +38,15 @@ public class TrackingAdapter extends RecyclerView.Adapter<TrackingAdapter.ViewHo
     @Override
     public void onBindViewHolder(TrackingAdapter.ViewHolder holder, int position) {
         final BirdTracking birdTracking = trackingList.get(position);
+        holder.setData(birdTracking, position);
 
-        String trackableNameValue = "Magpie";
-        holder.trackableName.setText(trackableNameValue);
-        holder.titleValue.setText(birdTracking.getTitle());
-        holder.dateValue.setText(birdTracking.getMeetTime());
-        holder.timeValue.setText(birdTracking.getMeetTime());
-        holder.locationValue.setText(birdTracking.getMeetLocation());
+        // holder.trackableName.setText("Magpie");
+        // holder.titleValue.setText(birdTracking.getTitle());
+//        holder.dateValue.setText(birdTracking.getMeetTime());
+//        holder.timeValue.setText(birdTracking.getMeetTime());
+//        holder.locationValue.setText(birdTracking.getMeetLocation());
+
+        // holder.setListeners();
     }
 
     @Override
@@ -51,7 +54,14 @@ public class TrackingAdapter extends RecyclerView.Adapter<TrackingAdapter.ViewHo
         return trackingList.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    // Add tracking item to recyclerview
+    public void addItem(int position, BirdTracking currentTracking) {
+        trackingList.add(position, currentTracking);
+        notifyItemInserted(position);
+        notifyItemRangeChanged(position, trackingList.size());
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public TextView trackableNameLabel;
         public TextView trackableName;
@@ -64,9 +74,16 @@ public class TrackingAdapter extends RecyclerView.Adapter<TrackingAdapter.ViewHo
         public TextView locationLabel;
         public TextView locationValue;
 
+        private BirdTracking currentTracking;
+        private int position;
+
+        private Button addTracking;
         public View mView;
+
         public ViewHolder(View itemView) {
             super(itemView);
+
+            addTracking = (Button) itemView.findViewById(R.id.addTracking);
 
             trackableNameLabel = (TextView) itemView.findViewById(R.id.trackableNameLabel);
             trackableName = (TextView) itemView.findViewById(R.id.trackableNameValue);
@@ -81,8 +98,28 @@ public class TrackingAdapter extends RecyclerView.Adapter<TrackingAdapter.ViewHo
 
             mView = itemView;
         }
+
+        public void setData(BirdTracking currentTracking, int position) {
+            this.trackableName.setText("Magpie");
+            this.titleValue.setText(currentTracking.getTitle());
+            this.dateValue.setText(currentTracking.getMeetTime());
+            this.timeValue.setText(currentTracking.getMeetTime());
+            this.locationValue.setText(currentTracking.getMeetLocation());
+            this.position = position;
+            this.currentTracking = currentTracking;
+        }
+
+        public void setListeners() {
+            // addTracking.setOnClickListener(ViewHolder.this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+                case R.id.addTracking:
+                    addItem(position, currentTracking);
+            }
+        }
     }
-
-
 
 }
