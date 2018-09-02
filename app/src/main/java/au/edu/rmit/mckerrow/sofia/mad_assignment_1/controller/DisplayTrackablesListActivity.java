@@ -62,7 +62,8 @@ public class DisplayTrackablesListActivity extends AppCompatActivity {
         spinner.setAdapter(arrayAdapter);
 
         // Stop onItemSelected() in FilterController from being initialised when the app is first started
-        spinner.setSelection(0, false);
+        int position = spinner.getSelectedItemPosition();
+        spinner.setSelection(position, false);
 
         spinner.setOnItemSelectedListener(new FilterController(this));
     }

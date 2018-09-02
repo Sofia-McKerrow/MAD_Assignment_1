@@ -2,7 +2,6 @@ package au.edu.rmit.mckerrow.sofia.mad_assignment_1.controller;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,7 +14,6 @@ import au.edu.rmit.mckerrow.sofia.mad_assignment_1.R;
 import au.edu.rmit.mckerrow.sofia.mad_assignment_1.model.BirdTrackable;
 import au.edu.rmit.mckerrow.sofia.mad_assignment_1.model.BirdTracking;
 import au.edu.rmit.mckerrow.sofia.mad_assignment_1.model.ReadFile;
-import au.edu.rmit.mckerrow.sofia.mad_assignment_1.model.TrackableInfo;
 import au.edu.rmit.mckerrow.sofia.mad_assignment_1.model.TrackingInfo;
 
 public class SaveTrackingButtonController implements View.OnClickListener{
@@ -27,11 +25,6 @@ public class SaveTrackingButtonController implements View.OnClickListener{
     private TrackingAdapter adapter;
     private AddEditTrackingActivity activity;
     private List<BirdTrackable> trackableList;
-    private TrackableInfo trackableInfo;
-
-    private static final String LOG_TAG = "MyTag";
-
-    private Button saveTracking;
 
     public SaveTrackingButtonController(Context mContext, AddEditTrackingActivity activity) {
         this.mContext = mContext;
@@ -70,8 +63,6 @@ public class SaveTrackingButtonController implements View.OnClickListener{
         }
         ReadFile.readTrackableFile(mContext);
         trackableList = ReadFile.getTrackableList();
-//        trackableInfo = TrackableInfo.getSingletonInstance(mContext);
-//        trackableList = trackableInfo.getTrackableList();
 
         // Get trackable ID from the selected trackable name
         for (int i = 0; i < trackableList.size(); i++) {
@@ -87,15 +78,10 @@ public class SaveTrackingButtonController implements View.OnClickListener{
         String finishTime = "05/07/2018 1:10:00 PM";
         Spinner meetDateSpinner = (Spinner) activity.findViewById(R.id.meetDateSpinner);
         String meetTime = meetDateSpinner.getSelectedItem().toString();
-
-//        EditText meetTimeValue = (EditText) activity.findViewById(R.id.meetDateEntry);
-//        String meetTime = meetTimeValue.getText().toString();
         String currentLocation = "-37.820666, 144.958277";
         String meetLocation = "-37.820666, 144.958277";
 
         tracking = new BirdTracking(trackingID, trackableID, title, startTime, finishTime, meetTime, currentLocation, meetLocation);
-
-        Log.i(LOG_TAG, tracking.toString());
 
         trackingList.add(tracking);
         trackingInfo.setTrackingList(trackingList);

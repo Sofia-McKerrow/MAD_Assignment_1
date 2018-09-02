@@ -54,7 +54,6 @@ public class TrackableAdapter extends RecyclerView.Adapter<TrackableAdapter.View
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Toast.makeText(mContext, "You selected " + birdTrackable.getName(), Toast.LENGTH_SHORT).show();
                 String trackableID = Integer.toString(birdTrackable.getTrackableID());
                 Intent intent = new Intent(mContext, DisplayTrackableRouteInfoActivity.class);
                 intent.putExtra(TRACKABLE_ID_KEY, trackableID);

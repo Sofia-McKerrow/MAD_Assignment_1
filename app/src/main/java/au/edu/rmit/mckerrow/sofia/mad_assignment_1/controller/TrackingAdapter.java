@@ -43,6 +43,7 @@ public class TrackingAdapter extends RecyclerView.Adapter<TrackingAdapter.ViewHo
     public void onBindViewHolder(TrackingAdapter.ViewHolder holder, int position) {
         final BirdTracking birdTracking = trackingList.get(position);
         holder.setData(birdTracking, position);
+        holder.setListeners();
     }
 
     @Override
@@ -50,18 +51,18 @@ public class TrackingAdapter extends RecyclerView.Adapter<TrackingAdapter.ViewHo
         return trackingList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        public TextView trackableNameLabel;
-        public TextView trackableName;
-        public TextView titleLabel;
-        public TextView titleValue;
-        public TextView dateLabel;
-        public TextView dateValue;
-        public TextView locationLabel;
-        public TextView locationValue;
-        public Button editButton;
-        public Button removeButton;
+        private TextView trackableNameLabel;
+        private TextView trackableName;
+        private TextView titleLabel;
+        private TextView titleValue;
+        private TextView dateLabel;
+        private TextView dateValue;
+        private TextView locationLabel;
+        private TextView locationValue;
+        private Button editButton;
+        private Button removeButton;
 
         private BirdTracking currentTracking;
         private int position;
@@ -106,6 +107,38 @@ public class TrackingAdapter extends RecyclerView.Adapter<TrackingAdapter.ViewHo
             this.position = position;
             this.currentTracking = currentTracking;
         }
+
+        public void setListeners() {
+            editButton.setOnClickListener(ViewHolder.this);
+            removeButton.setOnClickListener(ViewHolder.this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+                // If edit button is clicked
+                case R.id.editTracking:
+                    editTracking(position);
+                    break;
+
+                // If remove button is clicked
+                case R.id.removeTracking:
+                    removeTracking(position);
+                    break;
+            }
+        }
+    }
+
+    // Edit selected tracking
+    public void editTracking(int position) {
+
+    }
+
+    // Remove tracking from trackingList
+    public void removeTracking(int position) {
+        trackingList.remove(position);
+        notifyItemRemoved(position);
+        notifyItemRangeChanged(position, trackingList.size());
     }
 
 }
